@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/LoginValue"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/loginValue"
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/LastName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/lastName"
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/FirstName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/firstName"
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/PasswordValue"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:ems="10"
+        android:hint="@string/passwordValue"
+        android:inputType="textPassword"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/toJoin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/toJoin" />
+
+
+</LinearLayout>
