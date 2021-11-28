@@ -23,7 +23,7 @@ android:orientation="vertical">
     android:id="@+id/getHistoryOfDisease"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/toGetHistoryOfDisease" />
+    android:text="@string/toGetHistory" />
 
 <Button
     android:id="@+id/getOut"

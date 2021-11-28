@@ -1,15 +1,17 @@
 <resources>
-    <string name="app_name">healthCentre</string>
+    <string name="app_name">Центр здоровья</string>
     <string name="toGetService">Записаться к врачу</string>
     <string name="AboutHealthCentre">О поликлинике</string>
     <string name="OurMedics">Наши врачи</string>
     <string name="BackButton">Назад</string>
-    <string name="toGetHistoryOfDisease">История болезни</string>
+    <string name="toGetHistory">История посещений</string>
     <string name="toGetOut">Выйти</string>
-    <string name="toGetIn">ВОЙТИ</string>
-    <string name="loginValue">ЛОГИН</string>
-    <string name="passwordValue">ПАРОЛЬ</string>
+    <string name="toGetIn">Войти</string>
+    <string name="loginValue">Логин</string>
+    <string name="passwordValue">Пароль</string>
     <string name="toJoin">Зарегистрироваться</string>
     <string name="lastName">Фамилия</string>
     <string name="firstName">Имя</string>
+    <string name="toChooseTheDocText">Выбрать врача</string>
+    <string name="phone">Телефон</string>
 </resources>

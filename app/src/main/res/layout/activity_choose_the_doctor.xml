@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetHistory">
+    tools:context=".ChooseTheDoctor">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleHistory"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

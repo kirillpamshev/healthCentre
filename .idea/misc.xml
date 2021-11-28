@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_about_helth_centre.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_choose_the_doctor.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_get_history.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_get_history_of_diseases.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_get_service.xml" value="0.4" />
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_menu_of_buttons.xml" value="0.4" />
         <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/activity_regist_form.xml" value="0.264" />
+        <entry key="..\:/Users/White_Tiger/AndroidStudioProjects/healthCentre/app/src/main/res/layout/recycle_history_layout.xml" value="0.264" />
       </map>
     </option>
   </component>

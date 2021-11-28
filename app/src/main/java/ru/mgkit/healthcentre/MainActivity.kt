@@ -13,14 +13,17 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 
 object DATA_KEYS {
+    const val SPEC_NAME = "SPEC_NAME"
     const val LOGIN_STRING = "LOGIN_STRING"
     const val PASSWORD_STRING = "PASSWORD_STRING"
 }
 
+object DATA_LOGIN {
+    var login: String? = null
+}
+
 class MainActivity : AppCompatActivity() {
 
-    private var loginParameter = ""
-    private var passwordParameter = ""
     private lateinit var loginValue: EditText
     private lateinit var passwordValue: EditText
 
@@ -38,9 +41,8 @@ class MainActivity : AppCompatActivity() {
         toLogin.setOnClickListener {
             if (isOnline(this)) {
                 if (loginValue.text.isNotEmpty() && passwordValue.text.isNotEmpty()) {
-                    loginParameter = loginValue.text.toString()
-                    passwordParameter = passwordValue.text.toString()
-                    startActivity(Intent(this, MenuOfButtons::class.java).apply { putExtra(DATA_KEYS.LOGIN_STRING, loginParameter) })
+                    DATA_LOGIN.login = loginValue.text.toString()
+                    startActivity(Intent(this, MenuOfButtons::class.java) )
                 }
             } else {
                 Toast.makeText(this,"Нет интернета!",Toast.LENGTH_SHORT).show()
