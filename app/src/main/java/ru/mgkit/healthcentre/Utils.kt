@@ -18,6 +18,8 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 object DATA_KEYS {
+    const val NAME_DOCTOR = "NAME_DOCTOR"
+    const val ID_DOCTOR = "ID_DOCTOR"
     const val SPEC_NAME = "SPEC_NAME"
     const val LOGIN_STRING = "LOGIN_STRING"
     const val PASSWORD_STRING = "PASSWORD_STRING"
@@ -40,11 +42,28 @@ data class LoginAnswer(
 )
 
 data class TheDoctor (
+    @SerializedName("id_doctor")
+    @Expose
+    var id_doctor: Int? = null,
     @SerializedName("LFM_names")
     @Expose
     var LFM_names: String? = null
 )
 
+data class InfoHC (
+    @SerializedName("nameHC")
+    @Expose
+    var nameHC: String? = null,
+    @SerializedName("addressHC")
+    @Expose
+    var addressHC: String? = null,
+    @SerializedName("contactMain")
+    @Expose
+    var contactMain: String? = null,
+    @SerializedName("contactHot")
+    @Expose
+    var contactHot: String? = null,
+)
 
 data class TheSpec (
     @SerializedName("spec_name")
@@ -113,8 +132,8 @@ interface ApiService {
     fun getSpecs(): Call<List<TheSpec>>
     @POST("api/get_doctors")
     fun getDoctors(@Body currentSpec: String): Call<List<TheDoctor>>
-
-
+    @GET("api/get_info")
+    fun getInfoAboutHC(): Call<InfoHC>
 }
 
 object RetrofitSingleton{
@@ -170,9 +189,20 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 }
 
 
-class Adapter2 : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
 
     private var list : List<TheDoctor> = listOf()
+
+    interface OnDoctorClickListener {
+        fun onDoctorClick(id_doctor: Int, doctor_name: String)
+    }
+
+    private var onClickListener: OnDoctorClickListener? = null
+
+    fun setOnClickListener(onClickListener: OnDoctorClickListener) {
+        this.onClickListener = onClickListener
+    }
+
 
     fun getList() = list
 
@@ -181,18 +211,27 @@ class Adapter2 : RecyclerView.Adapter<Adapter.ViewHolder>() {
         list = newList
     }
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class HolderDoctor(itemView : View) : RecyclerView.ViewHolder(itemView) {
         var name : TextView = itemView.findViewById(R.id.LFM_names_text)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderDoctor {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout., parent, false)
-        return ViewHolder(view)
+            .inflate(R.layout.recycle_list_doctors_layout, parent, false)
+        return HolderDoctor(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HolderDoctor, position: Int) {
         holder.name.text = list[position].LFM_names
+        holder.itemView.setOnClickListener {
+            list[position].let { it1 -> it1.id_doctor?.let { it2 ->
+                it1.LFM_names?.let { it3 ->
+                    onClickListener?.onDoctorClick(
+                        it2, it3
+                    )
+                }
+            } }
+        }
     }
 
     override fun getItemCount() = list.size
