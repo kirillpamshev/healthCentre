@@ -121,6 +121,39 @@ data class historyItems(
     @Expose
     var status: Int? = null)
 
+
+data class QueryTime(
+    @SerializedName("id_doctor")
+    @Expose
+    var id_doctor: Int? = null,
+    @SerializedName("date")
+    @Expose
+    var date:String? = null
+)
+
+data class FreeTime(
+    @SerializedName("time")
+    @Expose
+    var time:String? = null
+)
+
+//*****************************************************************//
+data class ServiceData(
+    @SerializedName("codeDoctor")
+    @Expose
+    var codeDoctor:Int? = null,
+    @SerializedName("login_bd")
+    @Expose
+    var login_bd:String? = null,
+    @SerializedName("date")
+    @Expose
+    var date:String? = null,
+    @SerializedName("time")
+    @Expose
+    var time:String? = null
+)
+
+
 interface ApiService {
     @POST("api/login")
     fun getLogin(@Body currentLoginInfo: LoginInfo): Call<LoginAnswer>
@@ -134,6 +167,11 @@ interface ApiService {
     fun getDoctors(@Body currentSpec: String): Call<List<TheDoctor>>
     @GET("api/get_info")
     fun getInfoAboutHC(): Call<InfoHC>
+    @POST("api/get_time")
+    fun getTime(@Body queryTime: QueryTime):Call<List<FreeTime>>
+    @POST("api/get_service")
+    fun addGetService(@Body serviceData: ServiceData): Call<RegisterAnswer>
+
 }
 
 object RetrofitSingleton{
@@ -231,6 +269,56 @@ class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
                     )
                 }
             } }
+        }
+    }
+
+    override fun getItemCount() = list.size
+
+}
+
+
+class AdapterTime : RecyclerView.Adapter<AdapterTime.HolderTime>() {
+
+    private var list : List<FreeTime> = listOf()
+
+    interface OnTimeClickListener {
+        fun onTimeClick(time: String)
+    }
+
+    private var onClickListener: OnTimeClickListener? = null
+
+    fun setOnClickListener(onClickListener: OnTimeClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+
+    fun getList() = list
+
+
+    fun setList(newList : List<FreeTime>) {
+        list = newList
+    }
+
+    class HolderTime(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        var name : TextView = itemView.findViewById(R.id.LFM_names_text)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderTime {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycle_list_doctors_layout, parent, false)
+        return HolderTime(view)
+    }
+
+    override fun onBindViewHolder(holder: HolderTime, position: Int) {
+        holder.name.text = list[position].time
+        holder.itemView.setOnClickListener {
+            list[position].let { it1 ->
+                it1.time?.let { it2 ->
+                    onClickListener?.onTimeClick(
+                        it2
+                    )
+                }
+            }
         }
     }
 
