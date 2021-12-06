@@ -1,0 +1,59 @@
+CREATE TABLE "Clients" (
+	"login"	TEXT NOT NULL UNIQUE,
+	"lastName"	TEXT NOT NULL,
+	"firstname"	TEXT NOT NULL,
+	"midName"	TEXT,
+	"phone"	NUMERIC NOT NULL UNIQUE,
+	"password"	TEXT NOT NULL,
+	PRIMARY KEY("login")
+	
+);
+
+CREATE TABLE "Specs" (
+	"codeSpec"	INTEGER NOT NULL,
+	"nameSpec"	TEXT NOT NULL,
+	PRIMARY KEY("codeSpec")
+	
+);
+
+CREATE TABLE "Doctors" (
+	"codeDoctor"	INTEGER NOT NULL,
+	"lastName"	TEXT NOT NULL,
+	"firstName"	TEXT NOT NULL,
+	"midName"	TEXT,
+	"codeSpec"	INTEGER NOT NULL,
+	PRIMARY KEY("codeDoctor"),
+	FOREIGN KEY ("codeSpec") REFERENCES Specs ("codeSpec")
+);
+
+CREATE TABLE "Statuses" (
+	"codeStatus"	INTEGER NOT NULL,
+	"NameStatus"	TEXT NOT NULL,
+	PRIMARY KEY("codeStatus")
+);
+
+CREATE TABLE "Services" (
+	"idService"	INTEGER NOT NULL,
+	"codeDoctor"	INTEGER NOT NULL,
+	"login"	TEXT NOT NULL,
+	"time"	TEXT NOT NULL,
+	"date"	TEXT NOT NULL,
+	"codeStatus" INT NOT NULL,
+	PRIMARY KEY("idService"),
+	FOREIGN KEY ("codeStatus") REFERENCES Statuses ("codeStatus"),
+    FOREIGN KEY ("codeDoctor") REFERENCES Doctors ("codeDoctor"),
+	FOREIGN KEY ("login") REFERENCES Clients ("login")
+);
+
+
+INSERT INTO Clients VALUES('5541', 'Петров','Петр','Петрович','79991001234','sd3e2sad34re34redasewdscsdfasd34r')
+INSERT INTO Clients VALUES('5542', 'Василенко','Иван','Михайлович','79991005555','sd3e2sad34re34redasewdsxzsfasd34r')
+INSERT INTO Specs VALUES(1, 'Хирург')
+INSERT INTO Specs VALUES(2, 'Стоматолог')
+INSERT INTO Doctors VALUES(100, 'Алексеев','Максим','Петрович',1)
+INSERT INTO Doctors VALUES(200, 'Мартынова','Юлия','Антоновна',2)
+INSERT INTO Doctors VALUES(201, 'Мартынова','Виктория','Петровна',2)
+INSERT INTO Statuses VALUES(0, 'Закрыто')
+INSERT INTO Statuses VALUES(1, 'В проверке')
+INSERT INTO Statuses VALUES(2, 'Проверено')
+INSERT INTO Services VALUES(1,100,'5541','13:00','01.01.2021',1)

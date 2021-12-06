@@ -44,7 +44,7 @@ class EndOfGetService : AppCompatActivity() {
             setDate(it)
         }
         setInitialDateTime()
-        recycle_time = findViewById<RecyclerView>(R.id.recycle_list_doctors)
+        recycle_time = findViewById<RecyclerView>(R.id.recycle_time)
         recycle_time.layoutManager = LinearLayoutManager(this)
         recycle_time.adapter = adapter3
         val activity = this
@@ -99,6 +99,7 @@ class EndOfGetService : AppCompatActivity() {
             dateAndTime[Calendar.MONTH] = monthOfYear
             dateAndTime[Calendar.DAY_OF_MONTH] = dayOfMonth
             setInitialDateTime()
+            freetimesquery()
         }
 
     private fun freetimesquery() {
