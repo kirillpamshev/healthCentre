@@ -14,7 +14,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var loginValue: EditText

@@ -18,7 +18,7 @@ class ChooseTheDoctor : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_the_doctor)
         val spec = intent.getStringExtra(DATA_KEYS.SPEC_NAME)
-        val context = this.applicationContext
+        val context = this
         val recTable = findViewById<RecyclerView>(R.id.recycle_list_doctors)
         recTable.layoutManager = LinearLayoutManager(this)
 

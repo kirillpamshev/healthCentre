@@ -184,7 +184,7 @@ object RetrofitSingleton{
 
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
-    private val statusArray: Array<String> = arrayOf("В проверке", "Закрыто", "В проверке" )
+    private val statusArray: Array<String> = arrayOf("В проверке", "Закрыто", "Ожидается" )
 
     private var list : List<historyItems> = listOf()
 
