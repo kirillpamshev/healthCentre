@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".AboutHealthCentre"
+android:orientation="vertical">
+
+<androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AboutHealthCentre">
+    android:layout_height="50dp"
+    android:background="@color/red"
+    app:title="Контактная информация"
+    app:titleTextColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,24 +22,23 @@
             android:id="@+id/info_table_nameHC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            />
         <TextView
             android:id="@+id/info_table_addressHC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            />
         <TextView
             android:id="@+id/info_table_contactMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            />
         <TextView
             android:id="@+id/info_table_contactHot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            />
 
     </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

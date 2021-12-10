@@ -7,6 +7,14 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        app:title="Центр здоровья"
+        app:titleTextColor="@color/white"
+        />
+
     <EditText
         android:id="@+id/LoginValue"
         android:layout_width="match_parent"
@@ -51,7 +59,8 @@
         android:id="@+id/toJoin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/toJoin" />
-
+        android:text="@string/toJoin"
+        android:backgroundTint="@color/red"
+        />
 
 </LinearLayout>

@@ -15,9 +15,6 @@
     android:padding="10dp"
     android:orientation="vertical">
 
-
-
-
 <TextView
         android:id="@+id/LFM_names_text"
         android:layout_width="match_parent"

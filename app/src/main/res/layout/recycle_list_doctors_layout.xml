@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+tools:context=".MainActivity"
+android:layout_margin="10dp"
+android:backgroundTint="@color/gray"
+app:cardCornerRadius="20dp">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainActivity"
+    android:padding="10dp"
     android:orientation="vertical">
-
 
     <TextView
         android:id="@+id/LFM_names_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         />
 
-    <View
-        android:layout_width="wrap_content"
-        android:background="@drawable/separator"
-        android:layout_height="3dp" />
 
 
 </LinearLayout>
+</androidx.cardview.widget.CardView>

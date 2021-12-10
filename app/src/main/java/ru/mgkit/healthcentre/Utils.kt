@@ -30,7 +30,7 @@ object DATA_LOGIN {
     var login: String? = null
 }
 
-fun md5(input:String): String {
+fun md5(input: String): String {
     val md = MessageDigest.getInstance("MD5")
     return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
 }
@@ -38,10 +38,10 @@ fun md5(input:String): String {
 data class LoginAnswer(
     @SerializedName("isGranted")
     @Expose
-    var isGranted:Boolean = false
+    var isGranted: Boolean = false
 )
 
-data class TheDoctor (
+data class TheDoctor(
     @SerializedName("id_doctor")
     @Expose
     var id_doctor: Int? = null,
@@ -50,7 +50,7 @@ data class TheDoctor (
     var LFM_names: String? = null
 )
 
-data class InfoHC (
+data class InfoHC(
     @SerializedName("nameHC")
     @Expose
     var nameHC: String? = null,
@@ -65,7 +65,7 @@ data class InfoHC (
     var contactHot: String? = null,
 )
 
-data class TheSpec (
+data class TheSpec(
     @SerializedName("spec_name")
     @Expose
     var spec_name: String? = null
@@ -74,43 +74,43 @@ data class TheSpec (
 data class RegisterAnswer(
     @SerializedName("isOk")
     @Expose
-    var isOK:Boolean = false,
+    var isOK: Boolean = false,
     @SerializedName("error")
     @Expose
-    var error:String = ""
+    var error: String = ""
 )
 
 data class LoginInfo(
     @SerializedName("login")
     @Expose
-    var login:String? = null,
+    var login: String? = null,
     @SerializedName("passwordHash")
     @Expose
-    var passwordHash:String? = null
+    var passwordHash: String? = null
 )
 
 data class RegisterInfo(
     @SerializedName("login")
     @Expose
-    var login:String? = null,
+    var login: String? = null,
     @SerializedName("passwordHash")
     @Expose
-    var passwordHash:String? = null,
+    var passwordHash: String? = null,
     @SerializedName("firstname")
     @Expose
-    var firstname:String? = null,
+    var firstname: String? = null,
     @SerializedName("lastname")
     @Expose
-    var lastname:String? = null,
+    var lastname: String? = null,
     @SerializedName("phone")
     @Expose
-    var phone:String? = null
+    var phone: String? = null
 )
 
 data class historyItems(
     @SerializedName("name")
     @Expose
-    var name:String? = null,
+    var name: String? = null,
     @SerializedName("spec")
     @Expose
     var spec: String? = null,
@@ -119,7 +119,8 @@ data class historyItems(
     var datetime: String? = null,
     @SerializedName("status")
     @Expose
-    var status: Int? = null)
+    var status: Int? = null
+)
 
 
 data class QueryTime(
@@ -128,53 +129,58 @@ data class QueryTime(
     var id_doctor: Int? = null,
     @SerializedName("date")
     @Expose
-    var date:String? = null
+    var date: String? = null
 )
 
 data class FreeTime(
     @SerializedName("time")
     @Expose
-    var time:String? = null
+    var time: String? = null
 )
 
-//*****************************************************************//
 data class ServiceData(
     @SerializedName("codeDoctor")
     @Expose
-    var codeDoctor:Int? = null,
+    var codeDoctor: Int? = null,
     @SerializedName("login_bd")
     @Expose
-    var login_bd:String? = null,
+    var login_bd: String? = null,
     @SerializedName("date")
     @Expose
-    var date:String? = null,
+    var date: String? = null,
     @SerializedName("time")
     @Expose
-    var time:String? = null
+    var time: String? = null
 )
 
 
 interface ApiService {
     @POST("api/login")
     fun getLogin(@Body currentLoginInfo: LoginInfo): Call<LoginAnswer>
+
     @POST("api/register")
     fun addUser(@Body currentRegisterInfo: RegisterInfo): Call<RegisterAnswer>
+
     @POST("api/get_history")
     fun getHistory(@Body currentLogin: String): Call<List<historyItems>>
+
     @GET("api/get_specs")
     fun getSpecs(): Call<List<TheSpec>>
+
     @POST("api/get_doctors")
     fun getDoctors(@Body currentSpec: String): Call<List<TheDoctor>>
+
     @GET("api/get_info")
     fun getInfoAboutHC(): Call<InfoHC>
+
     @POST("api/get_time")
-    fun getTime(@Body queryTime: QueryTime):Call<List<FreeTime>>
+    fun getTime(@Body queryTime: QueryTime): Call<List<FreeTime>>
+
     @POST("api/get_service")
     fun addGetService(@Body serviceData: ServiceData): Call<RegisterAnswer>
-
 }
 
-object RetrofitSingleton{
+object RetrofitSingleton {
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(DATA_KEYS.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -184,22 +190,21 @@ object RetrofitSingleton{
 
 
 class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
-    private val statusArray: Array<String> = arrayOf("В проверке", "Закрыто", "Ожидается" )
+    private val statusArray: Array<String> = arrayOf("В проверке", "Закрыто", "Ожидается")
 
-    private var list : List<historyItems> = listOf()
+    private var list: List<historyItems> = listOf()
 
     fun getList() = list
 
-
-    fun setList(newList : List<historyItems>) {
+    fun setList(newList: List<historyItems>) {
         list = newList
     }
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var name : TextView = itemView.findViewById(R.id.LFM_names_text)
-        var spec : TextView = itemView.findViewById(R.id.spec_name_text)
-        var datetime : TextView = itemView.findViewById(R.id.date_time_text)
-        var status : TextView = itemView.findViewById(R.id.status_text)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name: TextView = itemView.findViewById(R.id.LFM_names_text)
+        var spec: TextView = itemView.findViewById(R.id.spec_name_text)
+        var datetime: TextView = itemView.findViewById(R.id.date_time_text)
+        var status: TextView = itemView.findViewById(R.id.status_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -214,7 +219,7 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
         holder.spec.text = list[position].spec
         holder.datetime.text = list[position].datetime
         holder.status.text = statusArray.getOrElse(list[position].status!!) { statusArray[0] }
-        when(list[position].status) {
+        when (list[position].status) {
             0 -> holder.status.setTextColor(Color.YELLOW)
             1 -> holder.status.setTextColor(Color.RED)
             2 -> holder.status.setTextColor(Color.GREEN)
@@ -229,7 +234,7 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
 
-    private var list : List<TheDoctor> = listOf()
+    private var list: List<TheDoctor> = listOf()
 
     interface OnDoctorClickListener {
         fun onDoctorClick(id_doctor: Int, doctor_name: String)
@@ -241,16 +246,15 @@ class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
         this.onClickListener = onClickListener
     }
 
-
     fun getList() = list
 
 
-    fun setList(newList : List<TheDoctor>) {
+    fun setList(newList: List<TheDoctor>) {
         list = newList
     }
 
-    class HolderDoctor(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var name : TextView = itemView.findViewById(R.id.LFM_names_text)
+    class HolderDoctor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name: TextView = itemView.findViewById(R.id.LFM_names_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderDoctor {
@@ -262,13 +266,14 @@ class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
     override fun onBindViewHolder(holder: HolderDoctor, position: Int) {
         holder.name.text = list[position].LFM_names
         holder.itemView.setOnClickListener {
-            list[position].let { it1 -> it1.id_doctor?.let { it2 ->
-                it1.LFM_names?.let { it3 ->
-                    onClickListener?.onDoctorClick(
-                        it2, it3
-                    )
+            list[position].let { it1 ->
+                it1.id_doctor?.let { it2 ->
+                    it1.LFM_names?.let { it3 ->
+                        onClickListener?.onDoctorClick(it2, it3)
+                    }
                 }
-            } }
+            }
+            //onClickListener!!.onDoctorClick(list[position].id_doctor!!, list[position].LFM_names!!)
         }
     }
 
@@ -279,7 +284,7 @@ class AdapterDoctors : RecyclerView.Adapter<AdapterDoctors.HolderDoctor>() {
 
 class AdapterTime : RecyclerView.Adapter<AdapterTime.HolderTime>() {
 
-    private var list : List<FreeTime> = listOf()
+    private var list: List<FreeTime> = listOf()
 
     interface OnTimeClickListener {
         fun onTimeClick(time: String)
@@ -295,12 +300,12 @@ class AdapterTime : RecyclerView.Adapter<AdapterTime.HolderTime>() {
     fun getList() = list
 
 
-    fun setList(newList : List<FreeTime>) {
+    fun setList(newList: List<FreeTime>) {
         list = newList
     }
 
-    class HolderTime(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var name : TextView = itemView.findViewById(R.id.LFM_names_text)
+    class HolderTime(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var name: TextView = itemView.findViewById(R.id.LFM_names_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderTime {

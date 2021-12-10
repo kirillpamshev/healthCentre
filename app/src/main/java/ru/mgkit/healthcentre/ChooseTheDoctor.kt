@@ -21,7 +21,6 @@ class ChooseTheDoctor : AppCompatActivity() {
         val context = this
         val recTable = findViewById<RecyclerView>(R.id.recycle_list_doctors)
         recTable.layoutManager = LinearLayoutManager(this)
-
         recTable.adapter = adapter2
         adapter2.setOnClickListener(object : AdapterDoctors.OnDoctorClickListener{
             override fun onDoctorClick(id_doctor: Int, doctor_name:String) {

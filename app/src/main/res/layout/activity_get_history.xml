@@ -5,9 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GetHistory">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        app:title="История посещений"
+        app:titleTextColor="@color/white" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

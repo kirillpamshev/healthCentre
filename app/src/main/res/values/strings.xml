@@ -15,4 +15,5 @@
     <string name="toChooseTheDocText">Выбрать врача</string>
     <string name="phone">Телефон</string>
     <string name="get">GET</string>
+    <string name="setDate">Выбрать дату</string>
 </resources>

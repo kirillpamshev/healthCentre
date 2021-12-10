@@ -7,29 +7,40 @@ android:layout_height="match_parent"
 tools:context=".MainActivity"
 android:orientation="vertical">
 
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/red"
+    app:title="Центр здоровья"
+    app:titleTextColor="@color/white" />
+
 <Button
     android:id="@+id/AboutHealthCentre"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/AboutHealthCentre" />
+    android:text="@string/AboutHealthCentre"
+    android:backgroundTint="@color/red"/>
 
 <Button
     android:id="@+id/getService"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/toGetService" />
+    android:text="@string/toGetService"
+    android:backgroundTint="@color/red"/>
 
 <Button
     android:id="@+id/getHistoryOfDisease"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/toGetHistory" />
+    android:text="@string/toGetHistory"
+    android:backgroundTint="@color/red"/>
 
 <Button
     android:id="@+id/getOut"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/toGetOut" />
+    android:text="@string/toGetOut"
+    android:backgroundTint="@color/red"/>
 
 
 </LinearLayout>
