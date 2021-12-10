@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import java.util.*
-
+import java.text.SimpleDateFormat
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 
@@ -85,11 +85,8 @@ class EndOfGetService : AppCompatActivity() {
 
     // установка начальных даты и времени
     private fun setInitialDateTime() {
-        currentDate.text = DateUtils.formatDateTime(
-            this,
-            dateAndTime.timeInMillis,
-            DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_YEAR
-        )
+        val date = Date(dateAndTime.timeInMillis)
+        currentDate.text = SimpleDateFormat("dd.MM.yyyy").format(date)
     }
 
     // установка обработчика выбора даты
